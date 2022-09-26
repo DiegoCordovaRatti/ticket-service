@@ -39,7 +39,7 @@ const NewTicket = (props) => {
         </Col>
         <Col span={8} >
           <Form.Item label="Fecha de Creación" name="dateTime">
-            <Input readOnly/>
+            <Input readOnly/> 
           </Form.Item>
         </Col>
       </Row>
@@ -65,12 +65,12 @@ const NewTicket = (props) => {
       <Row gutter={24}>
         <Col span={12}>
           <Form.Item label="Asunto" rules={[{ required: true, message: 'ingrese el asunto' }]}>
-          <TextArea rows={2} />
+          <TextArea rows={1} />
           </Form.Item>
         </Col>
         <Col span={12}>
           <Form.Item label="Detalles" rules={[{ required: true, message: 'ingrese los detalles del requerimiento' }]}>
-            <TextArea rows={2} />
+            <TextArea rows={1} />
           </Form.Item>
         </Col>
       </Row>
