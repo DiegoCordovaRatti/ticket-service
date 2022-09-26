@@ -1,0 +1,180 @@
+[
+  {
+    "value": "Contratación de servicios",
+    "label": "Contratación de servicios",
+    "children": [
+      {
+        "value": "Duilio Anglada-Casado",
+        "label": "Duilio Anglada-Casado"
+      },
+      {
+        "value": "Baudelio de Fernández",
+        "label": "Baudelio de Fernández"
+      },
+      {
+        "value": "Adrián Codina Casas",
+        "label": "Adrián Codina Casas"
+      },
+      {
+        "value": "Juan Bautista Company Escobar",
+        "label": "Juan Bautista Company Escobar"
+      },
+      {
+        "value": "Leocadia Vives Moll",
+        "label": "Leocadia Vives Moll"
+      },
+      {
+        "value": "Filomena Ponce Calvet",
+        "label": "Filomena Ponce Calvet"
+      }
+    ]
+  },
+  {
+    "value": "Servicio al Cliente",
+    "label": "Servicio al Cliente",
+    "children": [
+      {
+        "value": "Inmaculada Jerez Rosell",
+        "label": "Inmaculada Jerez Rosell"
+      },
+      {
+        "value": "Leonel Carballo",
+        "label": "Leonel Carballo"
+      },
+      {
+        "value": "Salvador Murillo Lladó",
+        "label": "Salvador Murillo Lladó"
+      },
+      {
+        "value": "Luís Mancebo Aguado",
+        "label": "Luís Mancebo Aguado"
+      },
+      {
+        "value": "Flavia Corominas Escribano",
+        "label": "Flavia Corominas Escribano"
+      },
+      {
+        "value": "María Manuela del Larrañaga",
+        "label": "María Manuela del Larrañaga"
+      }
+    ]
+  },
+  {
+    "value": "Equipo de telecomunicaciones",
+    "label": "Equipo de telecomunicaciones",
+    "children": [
+      {
+        "value": "Leoncio Clemente Nadal",
+        "label": "Leoncio Clemente Nadal"
+      },
+      {
+        "value": "Felicia Valcárcel Acero",
+        "label": "Felicia Valcárcel Acero"
+      },
+      {
+        "value": "Dionisia Luque",
+        "label": "Dionisia Luque"
+      },
+      {
+        "value": "María Manuela Bosch Taboada",
+        "label": "María Manuela Bosch Taboada"
+      },
+      {
+        "value": "Calista Perea-Fernández",
+        "label": "Calista Perea-Fernández"
+      },
+      {
+        "value": "Augusto Botella Prada",
+        "label": "Augusto Botella Prada"
+      }
+    ]
+  },
+  {
+    "value": "Técnico en linea",
+    "label": "Técnico en linea",
+    "children": [
+      {
+        "value": "Cruz Pilar Sevillano Fuster",
+        "label": "Cruz Pilar Sevillano Fuster"
+      },
+      {
+        "value": "Renato de Oliver",
+        "label": "Renato de Oliver"
+      },
+      {
+        "value": "Anselmo Tudela Mora",
+        "label": "Anselmo Tudela Mora"
+      },
+      {
+        "value": "Rosenda del Soler",
+        "label": "Rosenda del Soler"
+      },
+      {
+        "value": "Aura Lumbreras-Alemany",
+        "label": "Aura Lumbreras-Alemany"
+      },
+      {
+        "value": "Andrés Quirós Ribas",
+        "label": "Andrés Quirós Ribas"
+      }
+    ]
+  },
+  {
+    "value": "Finanazas",
+    "label": "Finanazas",
+    "children": [{
+        "value": "Filomena de Llorens",
+        "label": "Filomena de Llorens"
+      },
+      {
+        "value": "Plinio del Grau",
+        "label": "Plinio del Grau"
+      },
+      {
+        "value": "Rosalinda Carlos Pedraza",
+        "label": "Rosalinda Carlos Pedraza"
+      },
+      {
+        "value": "Julián Carpio Toledo",
+        "label": "Julián Carpio Toledo"
+      },
+      {
+        "value": "Berta Águila Rodríguez",
+        "label": "Berta Águila Rodríguez"
+      },
+      {
+        "value": "Anselmo Gomila Llabrés",
+        "label": "Anselmo Gomila Llabrés"
+      }
+    ]
+  },
+  {
+    "value": "Instalación, Cambio o Retiro",
+    "label": "Instalación, Cambio o Retiro",
+    "children": [{
+        "value": "Melisa Felicia Garmendia Durán",
+        "label": "Melisa Felicia Garmendia Durán"
+      },
+      {
+        "value": "Inmaculada Pol Sevillano",
+        "label": "Inmaculada Pol Sevillano"
+      },
+      {
+        "value": "Rosalina Paz Rivero",
+        "label": "Rosalina Paz Rivero"
+      },
+      {
+        "value": "Luna Crespi",
+        "label": "Luna Crespi"
+      },
+      {
+        "value": "Amor Frías-Rebollo",
+        "label": "Amor Frías-Rebollo"
+      },
+      {
+        "value": "Edelmira Hervás Machado",
+        "label": "Edelmira Hervás Machado"
+      }
+    ]
+  }
+]
