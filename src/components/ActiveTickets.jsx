@@ -1,4 +1,4 @@
-import { Tabs, Empty, Button } from "antd";
+import { Tabs, } from "antd";
 import { useState, useEffect } from "react";
 import { onSnapshot } from "firebase/firestore";
 import { ticketsCollection } from "../database/authentication";
@@ -7,32 +7,18 @@ import TicketInfo from './TicketInfo';
 
 
 export default function ActiveTickets() {
-  const Id = 123456
-
   const [ticketsArray, setTicketsArray] = useState([])
   useEffect(
     () =>
-    onSnapshot(ticketsCollection, (ticketsSnapshot) =>
+    onSnapshot(ticketsCollection, (ticketsSnapshot) =>{
+      console.log(ticketsSnapshot)
       setTicketsArray(
         ticketsSnapshot.docs.map((ticket) => ticket.data())
       )
+    }
     ), []
   );
-  // address
-  // assignedDate
-  // assignedTime
-  // clientName
-  // createdBy
-  // createdOn
-  // flatNumber
-  // regionComune
-  // reqType
-  // subject
-  // subjectDetails
-  // techDepartment
-
-
-
+    console.log(ticketsArray)
   const tabsItems = ticketsArray.map((ticket, index) => {
     return {
       label: <TicketInfo 
@@ -45,17 +31,9 @@ export default function ActiveTickets() {
       children: <TicketDescription ticket={ticket}/>
     }
   })
-  console.log(tabsItems)
-  
   return (
     <div>
-          <Tabs style={{height: '70vh'}} tabPosition="left" items={tabsItems}>
-            
-          </Tabs>
-        {/* <Empty image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg" 
-          imageStyle={{height: 60}} description={ 'No hay ninguna entrada' }>
-          <Button type="primary">Crear un nuevo ticket</Button>
-        </Empty> */}
+      <Tabs style={{height: '70vh'}} tabPosition="left" items={tabsItems} />
     </div>
   )
 }
