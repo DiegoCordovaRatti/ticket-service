@@ -11,21 +11,7 @@ const {TextArea} = Input
 const NewTicket = (props) => {
   const {area, user} = props.parentProps
   const date = new Date().toLocaleString()
-  // {
-    //  address: '',
-    //  assignedDate: '',
-    //  assignedTime: '',
-    //  clientName: '',
-    //  createdBy: '',
-    //  createdOn: '',
-    //  flatNumber: '',
-    //  regionComune: '',
-    //  reqType: '',
-    //  subject: '',
-    //  subjectDetails: '',
-    //  techDepartment: ''
-    // }
-    
+  
     const [formValues, setFormValues] = useState({
       address: '',
       assignedDate: '',
@@ -51,7 +37,6 @@ const NewTicket = (props) => {
       ...prevFormValues,
       [e.target.name]: e.target.value,
     }))
-    console.log(formValues)
   }
   const onRegionChange = (value) => {
     setFormValues(prevFormValues =>({ ...prevFormValues, regionComune: value,}));
@@ -94,9 +79,10 @@ const NewTicket = (props) => {
 
     const onFinish = (values) => {
       console.log('Success:', values);
+      alert('Ticket creado correctamente')
       onSubmit()
     };
-  
+    
     const onFinishFailed = (errorInfo) => {
       console.log('Failed:', errorInfo);
     };

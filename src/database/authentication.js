@@ -17,8 +17,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app)
+export const dataBase = getFirestore(app)
 
 export const auth =  getAuth(app)
-export const ticketsCollection =  collection(db, 'Tickets')
-export const usersCollection =  collection(db, 'Users')
+export const ticketsCollection =  collection(dataBase, 'Tickets')
+export const usersCollection =  collection(dataBase, 'Users')

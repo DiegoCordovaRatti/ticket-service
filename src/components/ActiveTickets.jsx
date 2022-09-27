@@ -8,17 +8,17 @@ import TicketInfo from './TicketInfo';
 
 export default function ActiveTickets() {
   const [ticketsArray, setTicketsArray] = useState([])
+  
   useEffect(
     () =>
     onSnapshot(ticketsCollection, (ticketsSnapshot) =>{
-      console.log(ticketsSnapshot)
       setTicketsArray(
-        ticketsSnapshot.docs.map((ticket) => ticket.data())
+        ticketsSnapshot.docs.map((ticket) => ticket.data()) //el estado es actualizado con los tickets de Cloud Firebase
       )
     }
-    ), []
+    ), [] // No retorna eternamente el arreglo (component didMounted & unMounted)
   );
-    console.log(ticketsArray)
+  
   const tabsItems = ticketsArray.map((ticket, index) => {
     return {
       label: <TicketInfo 
@@ -26,11 +26,13 @@ export default function ActiveTickets() {
         req={ticket.reqType} 
         subject={ticket.subject} 
         date={ticket.assignedDate + ', '+ ticket.assignedTime}
+        completed={ticket.completed}
       />,
       key: index+1,
       children: <TicketDescription ticket={ticket}/>
     }
   })
+  
   return (
     <div>
       <Tabs style={{height: '70vh'}} tabPosition="left" items={tabsItems} />
