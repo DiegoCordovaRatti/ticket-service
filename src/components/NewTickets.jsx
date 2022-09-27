@@ -1,16 +1,35 @@
-import { Form, Row, Col, Input, Cascader, Divider, Select, DatePicker, TimePicker, Button } from 'antd';
+import { Form, Row, Col, Input, Cascader, Divider, Select, DatePicker, TimePicker, Button, Breadcrumb } from 'antd';
 import moment from 'moment'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ticketsCollection } from "../database/authentication";
-import { addDoc, updateDoc } from "firebase/firestore";
+import { ticketsCollection, auth, dataBase } from "../database/authentication";
+import { addDoc, updateDoc, getDoc, doc } from "firebase/firestore";
 import RegionesJSON from '../assets/regiones.json';
 import techDepartmentJSON from '../assets/techDepartment.json';
 const {Option} = Select;
 const {TextArea} = Input
 
-const NewTicket = (props) => {
-  const {area, user} = props.parentProps
+const NewTicket = () => {
+  
+  const [CurrentUser, setCurrrentUser] = useState({
+    area: '',
+    user: ''
+  });
+  useEffect(() => {
+    const current = auth.currentUser.email
+    const userDocs = async() =>{
+      const current = auth.currentUser.email
+      const userRef = doc(dataBase, 'Users', current)
+      const userSnap = await getDoc(userRef);
+      if (userSnap.exists()) {
+        setCurrrentUser (userSnap.data())
+      }
+    }
+    if (current != null) {
+      userDocs()
+    }
+  }, []);
+
   let navigate = useNavigate()
   const date = new Date().toLocaleString()
   
@@ -19,7 +38,7 @@ const NewTicket = (props) => {
       assignedDate: '',
       assignedTime: '',
       clientName: '',
-      createdBy: area + ' - ' + user,
+      createdBy: [],
       createdOn: date,
       flatNumber: '',
       regionComune: [],
@@ -31,13 +50,13 @@ const NewTicket = (props) => {
     const getInitialValues = () => {
       return {
         createdOn: date,
-        createdBy: [area + ' - ' + user],
       }
     }
     const handleInputChange = e => {
     setFormValues(prevFormValues => ({
       ...prevFormValues,
       [e.target.name]: e.target.value,
+      createdBy: CurrentUser.area + ' - ' + CurrentUser.user
     }))
   }
   const onRegionChange = (value) => {
@@ -91,18 +110,22 @@ const NewTicket = (props) => {
     };
     return (
   <>
+    <Breadcrumb style={{margin: '16px 0',}}>
+      <Breadcrumb.Item>{CurrentUser.area}</Breadcrumb.Item>
+      <Breadcrumb.Item>{CurrentUser.user}</Breadcrumb.Item>
+    </Breadcrumb>
     <Form layout="vertical" initialValues={getInitialValues()} onFinish={onFinish} onFinishFailed={onFinishFailed}>
 
       <Divider orientation='left'>Información Cliente</Divider>
       <Row gutter={24}>
-        <Col span={8} >
-          <Form.Item label="Creado por" name='createdBy'>
-            <Input readOnly/>
-          </Form.Item>
-        </Col>
         <Col span={8}>
           <Form.Item label="Cliente" name='Client' rules={[{ required: true, message: 'Ingrese el nombre del cliente' }]}>
             <Input  name='clientName' onChange={handleInputChange}/>
+          </Form.Item>
+        </Col>
+        <Col span={8}>
+          <Form.Item label="Region y comuna" name='Comune' rules={[{ required: true, message: 'ingrese la comuna' }]}>
+            <Cascader options={Regiones} name='regionComune' onChange={onRegionChange} placeholder="Región / Comuna"/>
           </Form.Item>
         </Col>
         <Col span={8} >
@@ -112,17 +135,12 @@ const NewTicket = (props) => {
         </Col>
       </Row>
       <Row gutter={24}>
-        <Col span={8}>
-          <Form.Item label="Region y comuna" name='Comune' rules={[{ required: true, message: 'ingrese la comuna' }]}>
-            <Cascader options={Regiones} name='regionComune' onChange={onRegionChange} placeholder="Región / Comuna"/>
-          </Form.Item>
-        </Col>
-        <Col span={8}>
+        <Col span={12}>
           <Form.Item label="Direccion" name='Address' rules={[{ required: true, message: 'ingrese la dirección' }]}>
             <Input name='address' onChange={handleInputChange} />
           </Form.Item>
         </Col>
-        <Col span={8}>
+        <Col span={12}>
           <Form.Item label="Detalle domicilio (casa, local, deparmento, etc):">
             <Input name='flatNumber' onChange={handleInputChange}/>
           </Form.Item>
