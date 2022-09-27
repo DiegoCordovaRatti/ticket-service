@@ -35,7 +35,7 @@ export default function ActiveTickets() {
   
   return (
     <div>
-      <Tabs style={{height: '70vh'}} tabPosition="left" items={tabsItems} />
+      <Tabs style={{minHeight: '70vh'}} tabPosition="left" items={tabsItems} />
     </div>
   )
 }

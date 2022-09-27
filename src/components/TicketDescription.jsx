@@ -1,5 +1,5 @@
-import { Descriptions, Typography, Button } from "antd";
-import { doc, updateDoc } from "firebase/firestore";
+import { Descriptions, Typography, Button, Row, Col } from "antd";
+import { doc, updateDoc, deleteDoc } from "firebase/firestore";
 import { dataBase } from "../database/authentication";
 
 
@@ -46,13 +46,30 @@ export default function TicketDescription(props) {
       console.log(error)
     }
   }
+  const removeTicket = async() =>{
+    const ticketRef = doc(dataBase, "Tickets", id);
+    try {
+      await deleteDoc(ticketRef)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const buttonsFeatures = [
+    {type: 'primary', color: 'primary', handleClick: updateStatusTrue, text: 'Marcar como Listo'},
+    {type: 'danger', color: 'danger', handleClick: updateStatusFalse, text: 'Marcar como no realizado'},
+    {type: 'Outlined', color: 'danger', handleClick: removeTicket, text: 'Eliminar ticket'}
+  ]
+  const Buttons = buttonsFeatures.map(button =>
+    <Col span={{xs:'24', sm:'24'}}><Button type={button.type}  style={{margin: '5px'}} onClick={button.handleClick}>{button.text}</Button></Col>
+    )
   return (
     <div>
       <Descriptions title={`Requerimiento`} bordered column={{xs: 1, sm: 1, md: 1, lg:2}} size='small'>
         {DescriptionItems}
       </Descriptions>
-      <Button type="primary" style={{marginRight: '5px'}} onClick={updateStatusTrue}>Marcar como Listo</Button>
-      <Button type="danger" style={{marginLeft: '5px'}} onClick={updateStatusFalse}>Marcar como no realizado</Button>
+      <Row justify="center" gutter={10}>
+        {Buttons}
+      </Row>
     </div>
     )
 } 

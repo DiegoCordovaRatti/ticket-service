@@ -81,6 +81,7 @@ const NewTicket = (props) => {
       console.log('Success:', values);
       alert('Ticket creado correctamente')
       onSubmit()
+      
     };
     
     const onFinishFailed = (errorInfo) => {
