@@ -1,3 +1,30 @@
+# Ticket Service
+
+Use CRUD to create service tickets
+
+## Functionalities
+-  [x]  Create service tickets
+-  [x]  Update tickets as done or pending
+-  [x]  Delete ticketss
+
+## How was it built:
+The APP was built using the following technologies:
+
+-  [x]  JavaScript
+-  [x]  React
+-  [x]  React Router
+-  [x]  AntDesign
+-  [x]  Google Firebase
+
+<p align=center>
+    <img src = "https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
+    <img src = "https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white"/>
+    <img src = "https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
+    <img src = "https://img.shields.io/badge/-AntDesign-%230170FE?style=for-the-badge&logo=ant-design&logoColor=white)"/>
+    <img src = "https://img.shields.io/badge/Firebase-%2335495e?style=for-the-badge&logo=Firebase&logoColor=white"/>
+</p>
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
