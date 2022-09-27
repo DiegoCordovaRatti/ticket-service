@@ -8,14 +8,6 @@ Use CRUD to create service tickets
 -  [x]  Delete ticketss
 
 ## How was it built:
-The APP was built using the following technologies:
-
--  [x]  JavaScript
--  [x]  React
--  [x]  React Router
--  [x]  AntDesign
--  [x]  Google Firebase
-
 <p align=center>
     <img src = "https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
     <img src = "https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white"/>
@@ -23,7 +15,13 @@ The APP was built using the following technologies:
     <img src = "https://img.shields.io/badge/-AntDesign-%230170FE?style=for-the-badge&logo=ant-design&logoColor=white)"/>
     <img src = "https://img.shields.io/badge/Firebase-%2335495e?style=for-the-badge&logo=Firebase&logoColor=white"/>
 </p>
+The APP was built using the following technologies:
 
+-  [x]  JavaScript
+-  [x]  React
+-  [x]  React Router
+-  [x]  AntDesign
+-  [x]  Google Firebase
 
 # Getting Started with Create React App
 
