@@ -1,4 +1,5 @@
-import { Descriptions, Typography, Button, Row, Col } from "antd";
+import { Descriptions, Typography, Button, Row, Col, Skeleton } from "antd";
+import { useState,useEffect } from "react";
 import { doc, updateDoc, deleteDoc } from "firebase/firestore";
 import { dataBase } from "../database/authentication";
 
@@ -62,11 +63,16 @@ export default function TicketDescription(props) {
   const Buttons = buttonsFeatures.map(button =>
     <Col span={{xs:'24', sm:'24'}}><Button type={button.type}  style={{margin: '5px'}} onClick={button.handleClick}>{button.text}</Button></Col>
     )
+    const [ loading, setLoading ] = useState(true);
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 1500);
+  },[])
   return (
     <div>
-      <Descriptions title={`Requerimiento`} bordered column={{xs: 1, sm: 1, md: 1, lg:2}} size='small'>
+      {loading ? <Skeleton active paragraph={{rows: 10}}/> : <Descriptions title={`Requerimiento`} bordered column={{xs: 1, sm: 1, md: 1, lg:2}} size='small'>
         {DescriptionItems}
       </Descriptions>
+      }
       <Row justify="center" gutter={10}>
         {Buttons}
       </Row>

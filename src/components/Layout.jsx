@@ -8,15 +8,15 @@ import './style/Layout.css';
 const { Header, Content, Sider } = Layout;
 
 const menuItems = [
-    {label: <Link to='/'>Home</Link>, key: '1', icon: <HomeOutlined />, },
-    {label: <Link to='/active-tickets'>Active tickets</Link>, key: '2', icon: <AppstoreOutlined />, },
-    {label: <Link to='/new-tickets'>New tickets</Link>, key: '3', icon: <AppstoreAddOutlined />, },
+    {label: <Link to='/'>Página principal</Link>, key: '1', icon: <HomeOutlined />, },
+    {label: <Link to='/tickets-activos'>Tickets Activos</Link>, key: '2', icon: <AppstoreOutlined />, },
+    {label: <Link to='/nuevos-tickets'>Nuevos Tickets</Link>, key: '3', icon: <AppstoreAddOutlined />, },
 ];
 
 const SidebarLayout = (props) => {
     return (
     <Layout style={{ minHeight: '100vh' }}>
-      <Sider collapsible collapsed={true}>
+      <Sider collapsed={true}>
         <div className="logo" />
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={menuItems} />
       </Sider>
@@ -30,8 +30,8 @@ const SidebarLayout = (props) => {
           <div className="site-layout-background" style={{padding: 24,minHeight: 360,}}>
             <Routes>
               <Route path='/' element={<Home />} />
-              <Route path='/active-tickets' element={<ActiveTickets parentProps={props}/>} />
-              <Route path='/new-tickets'  element={<NewTickets parentProps={props}/>} />
+              <Route path='/tickets-activos' element={<ActiveTickets parentProps={props}/>} />
+              <Route path='/nuevos-tickets'  element={<NewTickets parentProps={props}/>} />
             </Routes>
           </div>
         </Content>
