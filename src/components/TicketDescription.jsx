@@ -74,7 +74,7 @@ export default function TicketDescription(props) {
       </Descriptions>
       }
       <Row justify="center" gutter={10}>
-        {Buttons}
+        {loading ? <Skeleton active paragraph={{rows: 2}}/> : Buttons}
       </Row>
     </div>
     )

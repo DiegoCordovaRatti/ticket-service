@@ -1,6 +1,7 @@
 import { Form, Row, Col, Input, Cascader, Divider, Select, DatePicker, TimePicker, Button } from 'antd';
 import moment from 'moment'
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ticketsCollection } from "../database/authentication";
 import { addDoc, updateDoc } from "firebase/firestore";
 import RegionesJSON from '../assets/regiones.json';
@@ -10,6 +11,7 @@ const {TextArea} = Input
 
 const NewTicket = (props) => {
   const {area, user} = props.parentProps
+  let navigate = useNavigate()
   const date = new Date().toLocaleString()
   
     const [formValues, setFormValues] = useState({
@@ -81,7 +83,7 @@ const NewTicket = (props) => {
       console.log('Success:', values);
       alert('Ticket creado correctamente')
       onSubmit()
-      
+      navigate('/tickets-activos')
     };
     
     const onFinishFailed = (errorInfo) => {

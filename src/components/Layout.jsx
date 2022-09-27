@@ -7,18 +7,18 @@ import NewTickets from './NewTickets';
 import './style/Layout.css';
 const { Header, Content, Sider } = Layout;
 
-const menuItems = [
-    {label: <Link to='/'>Página principal</Link>, key: '1', icon: <HomeOutlined />, },
-    {label: <Link to='/tickets-activos'>Tickets Activos</Link>, key: '2', icon: <AppstoreOutlined />, },
-    {label: <Link to='/nuevos-tickets'>Nuevos Tickets</Link>, key: '3', icon: <AppstoreAddOutlined />, },
-];
 
 const SidebarLayout = (props) => {
+  const menuItems = [
+      {label: <Link to='/'>Página principal</Link>, key: '1', icon: <HomeOutlined />, },
+      {label: <Link to='/tickets-activos'>Tickets Activos</Link>, key: '2', icon: <AppstoreOutlined />, },
+      {label: <Link to='/nuevos-tickets'>Nuevos Tickets</Link>, key: '3', icon: <AppstoreAddOutlined />, },
+  ];
     return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sider collapsed={true}>
         <div className="logo" />
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={menuItems} />
+        <Menu theme="dark" mode="inline" items={menuItems} />
       </Sider>
       <Layout className="site-layout">
         <Header className="site-layout-background" style={{padding: 0,}} />

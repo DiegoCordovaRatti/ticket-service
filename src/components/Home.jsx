@@ -1,4 +1,5 @@
-import { Card, Row, Col } from 'antd';
+import { Card, Row, Col, Divider } from 'antd';
+import SignIn from "./SignIn";
 
 const { Meta } = Card;
 
@@ -18,8 +19,14 @@ export default function Home(){
     </Col>
     )
   return(
-    <Row justify='center'>
-      {Cards}
-    </Row>
+    <div>
+      <Row justify='center'>
+        {Cards}
+      </Row>
+      <Divider orientation='center'>Ingrese a su cuenta</Divider>
+      <Row justify='center' style={{margin: '20px 0'}}>
+        <SignIn />
+      </Row>
+    </div>
   )
 }
