@@ -1,7 +1,6 @@
 import { HomeOutlined, AppstoreAddOutlined, AppstoreOutlined } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu } from 'antd';
 import { Route, Routes, Link } from "react-router-dom";
-import React, { useState } from 'react';
 import Home from './Home';
 import ActiveTickets from './ActiveTickets';
 import NewTickets from './NewTickets';
