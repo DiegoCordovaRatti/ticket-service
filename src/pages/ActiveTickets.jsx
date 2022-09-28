@@ -2,8 +2,8 @@ import { Tabs, Breadcrumb } from "antd";
 import { useState, useEffect } from "react";
 import { onSnapshot, doc, getDoc } from "firebase/firestore";
 import { ticketsCollection, auth, dataBase } from "../database/authentication";
-import TicketDescription from './TicketDescription.jsx';
-import TicketInfo from './TicketInfo';
+import TicketDescription from '../components/TicketDescription.jsx';
+import TicketInfo from '../components/TicketInfo';
 
 
 export default function ActiveTickets() {
@@ -12,15 +12,14 @@ export default function ActiveTickets() {
     user: ''
   });
   useEffect(() => {
-    const current = auth.currentUser.email
-    const userDocs = async() =>{
-      const userRef = doc(dataBase, 'Users', current)
-      const userSnap = await getDoc(userRef);
-      if (userSnap.exists()) {
-        setCurrrentUser (userSnap.data())
+    if (auth.currentUser !== null) {
+      const userDocs = async () => {
+        const userRef = doc(dataBase, 'Users', auth.currentUser.email)
+        const userSnap = await getDoc(userRef);
+        if (userSnap.exists()) {
+          setCurrrentUser(userSnap.data())
+        }
       }
-    }
-    if (current !== null) {
       userDocs()
     }
   }, []);

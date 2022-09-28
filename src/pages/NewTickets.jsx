@@ -16,14 +16,14 @@ const NewTicket = () => {
     user: ''
   });
   useEffect(() => {
-    const userDocs = async () => {
-      const userRef = doc(dataBase, 'Users', auth.currentUser.email)
-      const userSnap = await getDoc(userRef);
-      if (userSnap.exists()) {
-        setCurrrentUser(userSnap.data())
-      }
-    }
     if (auth.currentUser !== null) {
+      const userDocs = async () => {
+        const userRef = doc(dataBase, 'Users', auth.currentUser.email)
+        const userSnap = await getDoc(userRef);
+        if (userSnap.exists()) {
+          setCurrrentUser(userSnap.data())
+        }
+      }
       userDocs()
     }
   }, []);
