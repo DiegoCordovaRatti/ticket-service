@@ -13,7 +13,7 @@ export default function TicketInfo(props){
     <Paragraph style={{margin: '0 5px', fontSize: '12px'}}><Text strong>{info.label}:</Text> {info.text} </Paragraph>
   )
   const icons = completed ? <CheckCircleTwoTone twoToneColor='#45d330' style={{fontSize: '64px'}}/> : <ExclamationCircleTwoTone twoToneColor='#f80000' style={{fontSize: '64px'}}/>
-  
+
   const [ loading, setLoading ] = useState(true);
   useEffect(() => {
     setTimeout(() => setLoading(false), 1500);
@@ -23,7 +23,6 @@ export default function TicketInfo(props){
     <Row align="middle">
       {loading ? <Row><Skeleton active paragraph={{rows: 3, width:300}} /></Row> : <Col><Avatar size={64} icon={icons} /></Col>}
       {loading ? null : <Col>{paragraphs}</Col>}
-      
     </Row>
   )
 }

@@ -1,11 +1,11 @@
-import { HomeOutlined, AppstoreAddOutlined, AppstoreOutlined, UserOutlined, UserDeleteOutlined } from '@ant-design/icons';
+import { InfoCircleOutlined, AppstoreAddOutlined, AppstoreOutlined, UserOutlined, UserDeleteOutlined } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import { Route, Routes, Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { auth } from "../database/authentication";
 import { signOut } from "firebase/auth";
 import { AuthContext } from "../utils/AuthProvider";
-import Home from '../pages/Home';
+import Home from '../pages/Info';
 import SignIn from '../pages/SignIn';
 import NewTickets from '../pages/NewTickets';
 import ActiveTickets from '../pages/ActiveTickets';
@@ -25,12 +25,12 @@ const SidebarLayout = (props) => {
     })
   }
   const loggedOutMenuItems = [
-    {label: <Link to='/'>Página principal</Link>, key: '1', icon: <HomeOutlined />},
-    {label: <Link to='/ingresa'>Ingresa</Link>, key: '2', icon: <UserOutlined />},] 
+    {label: <Link to='/'>Ingresa</Link>, key: '1', icon: <UserOutlined />},
+    {label: <Link to='/info'>Información</Link>, key: '2', icon: <InfoCircleOutlined />},] 
   const loggedInMenuItems =[
-      {label: <Link to='/nuevos-tickets'>Nuevos Tickets</Link>, key: '3', icon: <AppstoreAddOutlined />, },
-      {label: <Link to='/tickets-activos'>Tickets Activos</Link>, key: '4', icon: <AppstoreOutlined />, },
-      {label: 'Cerrar sesión', key: '5', icon: <UserDeleteOutlined />, onClick: logout, danger: true}]
+    {label: <Link to='/tickets-activos'>Tickets Activos</Link>, key: '3', icon: <AppstoreOutlined />, },
+    {label: <Link to='/nuevos-tickets'>Nuevos Tickets</Link>, key: '4', icon: <AppstoreAddOutlined />, },
+    {label: 'Cerrar sesión', key: '5', icon: <UserDeleteOutlined />, onClick: logout, danger: true}]
     return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sider collapsed={true}>
@@ -41,8 +41,8 @@ const SidebarLayout = (props) => {
         <Content style={{margin: '16px 16px'}}>
           <div className="site-layout-background" style={{padding: 24,minHeight: 360,}}>
             <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/ingresa' element={<SignIn />} />
+              <Route path='/' element={<SignIn />} />
+              <Route path='/info' element={<Home />} />
               <Route path='/tickets-activos' element={<ActiveTickets parentProps={props}/>} />
               <Route path='/nuevos-tickets'  element={<NewTickets parentProps={props}/>} />
             </Routes>

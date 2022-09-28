@@ -9,7 +9,7 @@ const { Text } = Typography
 export default function TicketDescription(props) {
   const {address, assignedDate, assignedTime, clientName, createdBy, createdOn, 
     flatNumber, regionComune, reqType, subject, subjectDetails, techDepartment, id, completed } = props.ticket
-  const descriptionFields = [
+    const descriptionFields = [
     {label: <Text strong>Status:</Text>, description: (completed ? 'Requerimiento Resuelto' : 'Requerimiento Pendiente'), span: '2'},
     {label: <Text strong>ID:</Text>, description: id, span: '1'},
     {label: <Text strong>Creado por:</Text>, description: createdBy, span: '1'},
@@ -24,8 +24,9 @@ export default function TicketDescription(props) {
     {label: <Text strong>Asunto</Text>, description: subject, span: '2'},
     {label: <Text strong>Detalles</Text>, description: subjectDetails, span: '2'},
   ] 
+  const completedColors = completed ? '#46d33010' : '#f8000010'
   const DescriptionItems = descriptionFields.map(item => 
-  <Descriptions.Item label={item.label} span={item.span}>{ item.description }</Descriptions.Item>)
+  <Descriptions.Item label={item.label} span={item.span} style={{backgroundColor: completedColors}}>{ item.description }</Descriptions.Item>)
 
   const updateStatusTrue = async() =>{
     const ticketRef = doc(dataBase, "Tickets", id);
