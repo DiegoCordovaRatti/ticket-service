@@ -5,7 +5,15 @@ Use CRUD to create service tickets
 ## Functionalities
 -  [x]  Create service tickets
 -  [x]  Update tickets as done or pending
--  [x]  Delete ticketss
+-  [x]  Delete tickets
+-  [x]  Sign in & sign out (user: diego@tsapp.com | password: 123123123)
+
+
+## Future functionalities
+-  [x]  Personalized tickets for each user
+-  [x]  Sign up
+-  [x]  Modify tickets' information
+-  [x]  Filter by area
 
 ## How was it built:
 <p align=center>
