@@ -14,14 +14,13 @@ export default function ActiveTickets() {
   useEffect(() => {
     const current = auth.currentUser.email
     const userDocs = async() =>{
-      const current = auth.currentUser.email
       const userRef = doc(dataBase, 'Users', current)
       const userSnap = await getDoc(userRef);
       if (userSnap.exists()) {
         setCurrrentUser (userSnap.data())
       }
     }
-    if (current != null) {
+    if (current !== null) {
       userDocs()
     }
   }, []);

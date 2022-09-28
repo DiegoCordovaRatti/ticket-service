@@ -16,43 +16,41 @@ const NewTicket = () => {
     user: ''
   });
   useEffect(() => {
-    const current = auth.currentUser.email
-    const userDocs = async() =>{
-      const current = auth.currentUser.email
-      const userRef = doc(dataBase, 'Users', current)
+    const userDocs = async () => {
+      const userRef = doc(dataBase, 'Users', auth.currentUser.email)
       const userSnap = await getDoc(userRef);
       if (userSnap.exists()) {
-        setCurrrentUser (userSnap.data())
+        setCurrrentUser(userSnap.data())
       }
     }
-    if (current != null) {
+    if (auth.currentUser !== null) {
       userDocs()
     }
   }, []);
 
   let navigate = useNavigate()
   const date = new Date().toLocaleString()
-  
-    const [formValues, setFormValues] = useState({
-      address: '',
-      assignedDate: '',
-      assignedTime: '',
-      clientName: '',
-      createdBy: [],
+
+  const [formValues, setFormValues] = useState({
+    address: '',
+    assignedDate: '',
+    assignedTime: '',
+    clientName: '',
+    createdBy: [],
+    createdOn: date,
+    flatNumber: '',
+    regionComune: [],
+    reqType: '',
+    subject: '',
+    subjectDetails: '',
+    techDepartment: []
+  })
+  const getInitialValues = () => {
+    return {
       createdOn: date,
-      flatNumber: '',
-      regionComune: [],
-      reqType: '',
-      subject: '',
-      subjectDetails: '',
-      techDepartment: []
-    })
-    const getInitialValues = () => {
-      return {
-        createdOn: date,
-      }
     }
-    const handleInputChange = e => {
+  }
+  const handleInputChange = e => {
     setFormValues(prevFormValues => ({
       ...prevFormValues,
       [e.target.name]: e.target.value,
@@ -60,21 +58,36 @@ const NewTicket = () => {
     }))
   }
   const onRegionChange = (value) => {
-    setFormValues(prevFormValues =>({ ...prevFormValues, regionComune: value,}));
+    setFormValues(prevFormValues => ({
+      ...prevFormValues,
+      regionComune: value,
+    }));
   };
   const onReqChange = (value) => {
-    setFormValues(prevFormValues =>({ ...prevFormValues, reqType: value,}));
+    setFormValues(prevFormValues => ({
+      ...prevFormValues,
+      reqType: value,
+    }));
   };
   const onTechChange = (value) => {
-    setFormValues(prevFormValues =>({ ...prevFormValues, techDepartment: value,}));
+    setFormValues(prevFormValues => ({
+      ...prevFormValues,
+      techDepartment: value,
+    }));
   };
   const onDateChange = (value) => {
-    setFormValues(prevFormValues =>({ ...prevFormValues, assignedDate: value.format('L')}));
+    setFormValues(prevFormValues => ({
+      ...prevFormValues,
+      assignedDate: value.format('L')
+    }));
   };
   const onTimeChange = (value) => {
-    setFormValues(prevFormValues =>({ ...prevFormValues, assignedTime: value.format('LT')}));
+    setFormValues(prevFormValues => ({
+      ...prevFormValues,
+      assignedTime: value.format('LT')
+    }));
   };
-  const onSubmit = async() =>{
+  const onSubmit = async () => {
     const docRef = await addDoc(ticketsCollection, {
       address: formValues.address,
       assignedDate: formValues.assignedDate,
@@ -89,25 +102,25 @@ const NewTicket = () => {
       subjectDetails: formValues.subjectDetails,
       techDepartment: formValues.techDepartment
     })
-    await updateDoc(docRef,{
+    await updateDoc(docRef, {
       id: docRef.id,
       completed: false
     })
 
   }
-    const Regiones = RegionesJSON
-    const TechDepartment = techDepartmentJSON
+  const Regiones = RegionesJSON
+  const TechDepartment = techDepartmentJSON
 
-    const onFinish = (values) => {
-      console.log('Success:', values);
-      alert('Ticket creado correctamente')
-      onSubmit()
-      navigate('/tickets-activos')
-    };
-    
-    const onFinishFailed = (errorInfo) => {
-      console.log('Failed:', errorInfo);
-    };
+  const onFinish = (values) => {
+    console.log('Success:', values);
+    alert('Ticket creado correctamente')
+    onSubmit()
+    navigate('/tickets-activos')
+  };
+
+  const onFinishFailed = (errorInfo) => {
+    console.log('Failed:', errorInfo);
+  };
     return (
   <>
     <Breadcrumb style={{margin: '16px 0',}}>

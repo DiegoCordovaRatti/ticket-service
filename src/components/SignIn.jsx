@@ -17,19 +17,27 @@ const SignIn = () => {
       [e.target.name]: e.target.value,
     }))
   }
-  const onFinish = (values) => {
-    try {
+  const onFinish = () => {
+    
       signInWithEmailAndPassword(auth, formValues.Email, formValues.Password)
       .then((userCredential) =>{
         const user = userCredential.user
-        console.log(user)
         alert('Bienvenido ' + user.email)
+        setInterval(navigate('/tickets-activos'), 1000)
       })
-      navigate('/tickets-activos')
-    } catch (error) {
-      console.log(error.message)
-    }
-  };
+      .catch (function(error) {
+        if (error.code === "auth/user-not-found") {
+          alert(`Usuario no encontrado, intente con otro.`)
+        } else if (error.code === "auth/invalid-email") {
+          alert(`Cuenta inválida, intente con otra.`)
+        } else if (error.code === "auth/wrong-password") {
+          alert(`Contraseña invalida, intente con otra.`)
+        } else {
+          alert(`Un error ha ocurrido, intente de nuevo`)
+        }
+      })
+  }
+
 
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);

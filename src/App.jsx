@@ -5,7 +5,7 @@ import SidebarLayout from './components/Layout';
 function App() {
   return (
     <BrowserRouter>
-      <SidebarLayout area='Call Center' user='Diego' />
+      <SidebarLayout />
     </BrowserRouter>
   );
 } 

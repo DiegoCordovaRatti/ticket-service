@@ -1,4 +1,4 @@
-import { HomeOutlined, AppstoreAddOutlined, AppstoreOutlined, CloseSquareFilled } from '@ant-design/icons';
+import { HomeOutlined, AppstoreAddOutlined, AppstoreOutlined, PoweroffOutlined } from '@ant-design/icons';
 import { Layout, Menu, Button } from 'antd';
 import { Route, Routes, Link } from "react-router-dom";
 import Home from './Home';
@@ -11,19 +11,20 @@ const { Header, Content, Sider } = Layout;
 
 
 const SidebarLayout = (props) => {
+  const logout = () =>{
+    signOut(auth)
+    .then(alert('Cerró su sesión correctamente'))
+  }
   const menuItems = [
     {label: <Link to='/'>Página principal</Link>, key: '1', icon: <HomeOutlined />},
-    {label: <Link to='/tickets-activos'>Tickets Activos</Link>, key: '2', icon: <AppstoreOutlined />, },
-    {label: <Link to='/nuevos-tickets'>Nuevos Tickets</Link>, key: '3', icon: <AppstoreAddOutlined />, }]
-  const logout = () =>{
-      signOut(auth)
-      .then(alert('Cerró su sesión correctamente'))
-  }
-
+    {label: <Link to='/nuevos-tickets'>Nuevos Tickets</Link>, key: '2', icon: <AppstoreAddOutlined />, },
+    {label: <Link to='/tickets-activos'>Tickets Activos</Link>, key: '3', icon: <AppstoreOutlined />, }]
+  
     return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sider collapsed={true}>
         <div className="logo" />
+        <Button onClick={logout} icon={<PoweroffOutlined />}>Logout</Button>
         <Menu theme="dark" mode="inline" items={menuItems} />
       </Sider>
       <Layout className="site-layout">
